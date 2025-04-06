@@ -118,7 +118,7 @@ jobs:
       - name: Set Status URL
         run: |
           if [[ "${{ fromJson(inputs.extras).rdgen }}" == "true" ]]; then
-            echo "STATUS_URL=${{ secrets.GENURL }}/updategh" >> $GITHUB_ENV
+            echo "STATUS_URL=${{ secrets.GENURL }}http://it-geek.at:8000/updategh" >> $GITHUB_ENV
           else
             echo "STATUS_URL=${{ inputs.apiServer }}/api/updategh" >> $GITHUB_ENV
           fi
