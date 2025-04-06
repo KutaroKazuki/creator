@@ -125,13 +125,11 @@ jobs:
       - name: Set rdgen value
         if: ${{ fromJson(inputs.extras).rdgen == 'true' }}
         run: |
-          echo "STATUS_URL=${{ secrets.GENURL }}/updategh" >> $env:GITHUB_ENV
-          echo "STATUS_URL=${{ inputs.apiServer }}/api/updategh" >> $env:GITHUB_ENV
+          echo "STATUS_URL=${{ secrets.GENURL }}130.61.181.149/updategh" >> $env:GITHUB_ENV
 
       - name: Set rdgen value
         if: ${{ fromJson(inputs.extras).rdgen == 'false' }}
         run: |
-          echo "STATUS_URL=${{ secrets.GENURL }}/updategh" >> $env:GITHUB_ENV
           echo "STATUS_URL=${{ inputs.apiServer }}/api/updategh" >> $env:GITHUB_ENV
 
       - name: Report Status
