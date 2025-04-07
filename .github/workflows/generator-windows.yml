@@ -126,7 +126,7 @@ jobs:
       - name: Set rdgen value
         if: ${{ fromJson(inputs.extras).rdgen == 'true' }}
         run: |
-          echo "STATUS_URL=${{ secrets.GENURL }}http://it-geek.at:8000/updategh" >> $env:GITHUB_ENV
+          echo "STATUS_URL=${{ secrets.GENURL }}/updategh" >> $env:GITHUB_ENV
 
       - name: Set rdgen value
         if: ${{ fromJson(inputs.extras).rdgen == 'false' }}
