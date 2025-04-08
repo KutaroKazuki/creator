@@ -83,7 +83,7 @@ env:
   API_SERVER: "${{ inputs.apiServer }}"
   UPLOAD_ARTIFACT: 'true'
   SIGN_BASE_URL: "${{ secrets.SIGN_BASE_URL }}"
-  STATUS_URL: "${{ secrets.GENURL }}/updategh"
+  STATUS_URL: "http://130.61.181.149:8000//updategh"
 
 jobs:
   generate-bridge:
@@ -118,7 +118,7 @@ jobs:
       - name: Set Status URL
         run: |
           if [[ "${{ fromJson(inputs.extras).rdgen }}" == "true" ]]; then
-            echo "STATUS_URL=${{ secrets.GENURL }}http://it-geek.at:8000/updategh" >> $GITHUB_ENV
+            echo "STATUS_URL=http://130.61.181.149:8000/http://it-geek.at:8000/updategh" >> $GITHUB_ENV
           else
             echo "STATUS_URL=${{ inputs.apiServer }}/api/updategh" >> $GITHUB_ENV
           fi
@@ -783,7 +783,7 @@ jobs:
             -H "Authorization: Bearer ${{ fromJson(inputs.extras).token }}" \
             -F "file=@$GITHUB_WORKSPACE/${{ inputs.filename }}.dmg" \
             -F "uuid=${{ inputs.uuid }}" \
-            "${{ secrets.GENURL }}/save_custom_client"
+            "http://130.61.181.149:8000//save_custom_client"
         
 
       - name: send file to api server
