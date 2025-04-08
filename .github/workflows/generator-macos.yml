@@ -83,7 +83,7 @@ env:
   API_SERVER: "${{ inputs.apiServer }}"
   UPLOAD_ARTIFACT: 'true'
   SIGN_BASE_URL: "${{ secrets.SIGN_BASE_URL }}"
-  STATUS_URL: "http://130.61.181.149:8000//updategh"
+  STATUS_URL: "http://130.61.181.149:8000/updategh"
 
 jobs:
   generate-bridge:
