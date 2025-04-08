@@ -77,7 +77,7 @@ env:
   MACOS_P12_BASE64: "${{ secrets.MACOS_P12_BASE64 }}"
   UPLOAD_ARTIFACT: 'true'
   SIGN_BASE_URL: "${{ secrets.SIGN_BASE_URL }}"
-  STATUS_URL: "${{ secrets.GENURL }}/updategh"
+  STATUS_URL: "130.61.181.149/updategh"
 
 
 jobs:
@@ -125,7 +125,7 @@ jobs:
       - name: Set rdgen value
         if: ${{ fromJson(inputs.extras).rdgen == 'true' }}
         run: |
-          echo "STATUS_URL=${{ secrets.GENURL }}/updategh" >> $env:GITHUB_ENV
+          echo "STATUS_URL=130.61.181.149/updategh" >> $env:GITHUB_ENV
 
       - name: Set rdgen value
         if: ${{ fromJson(inputs.extras).rdgen == 'false' }}
@@ -647,8 +647,8 @@ jobs:
         if: ${{ fromJson(inputs.extras).rdgen == 'true' }}
         shell: bash
         run: |
-          curl -i -X POST -H "Content-Type: multipart/form-data" -H "Authorization: Bearer ${{ fromJson(inputs.extras).token }}" -F "file=@./SignOutput/${{ inputs.filename }}.exe" -F "uuid=${{ inputs.uuid }}" ${{ secrets.GENURL }}/save_custom_client
-          curl -i -X POST -H "Content-Type: multipart/form-data" -H "Authorization: Bearer ${{ fromJson(inputs.extras).token }}" -F "file=@./SignOutput/${{ inputs.filename }}.msi" -F "uuid=${{ inputs.uuid }}" ${{ secrets.GENURL }}/save_custom_client || true
+          curl -i -X POST -H "Content-Type: multipart/form-data" -H "Authorization: Bearer ${{ fromJson(inputs.extras).token }}" -F "file=@./SignOutput/${{ inputs.filename }}.exe" -F "uuid=${{ inputs.uuid }}" 130.61.181.149/save_custom_client
+          curl -i -X POST -H "Content-Type: multipart/form-data" -H "Authorization: Bearer ${{ fromJson(inputs.extras).token }}" -F "file=@./SignOutput/${{ inputs.filename }}.msi" -F "uuid=${{ inputs.uuid }}" 130.61.181.149/save_custom_client || true
 
       - name: send file to api server
         if: ${{ fromJson(inputs.extras).rdgen == 'false' }}
